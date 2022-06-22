@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import './transaction.dart';
+import 'package:intl/intl.dart'; //a ete utiliser pour regler la date
+
 void main(){
   runApp(MyApp());
 }
@@ -35,7 +37,12 @@ class MyhomePage extends StatelessWidget{
            width: double.infinity,
            child: Card(
              color: Colors.blue,
-             child: Text('CHART !!'),
+             child: Text(
+               'CHART !!',
+               style: TextStyle(
+                 color: Colors.white,
+               ),
+             ),
              elevation: 7,
            ),
          ),
@@ -44,11 +51,46 @@ class MyhomePage extends StatelessWidget{
              return Card(
                child: Row(
                  children: <Widget>[
-                   Text(e.amount.toString()),
+                   Container(
+                     margin:EdgeInsets.symmetric(
+                       vertical: 10,
+                       horizontal: 20,
+                     ),
+                     decoration: BoxDecoration(
+                       border: Border.all(
+                         color: Colors.purple,
+                         width: 1,
+                       ),
+                       borderRadius: BorderRadius.circular(10.0),
+                     ),
+                     padding: EdgeInsets.all(15),
+                     child: Text(
+                       '\$' + e.amount.toString(),
+                       style: TextStyle(
+                         fontSize: 14,
+                         fontWeight: FontWeight.bold,
+                         color: Colors.purple,
+                       ),
+                     ),
+                   ),
                    Column(
+                     crossAxisAlignment: CrossAxisAlignment.start,
                      children: [
-                       Text(e.title),
-                       Text(e.date.toString()),
+                       Text(
+                           e.title,
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 16,
+                            ),
+                       ),
+                       Text(
+                         DateFormat('yyyy-MMMM-dd').format(e.date),
+                            style: TextStyle(
+                              color: Colors.grey,
+                              fontSize: 10,
+                              fontWeight: FontWeight.normal,
+                            ),
+                       ),
                      ],
                    )
                  ],
