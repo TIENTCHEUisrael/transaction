@@ -30,7 +30,7 @@ class MyhomePage extends StatelessWidget{
        ),
      ),
      body: Column(
-       mainAxisAlignment: MainAxisAlignment.spaceAround,
+       //mainAxisAlignment: MainAxisAlignment.start,
        crossAxisAlignment: CrossAxisAlignment.center,
        children: <Widget>[
          Container(
@@ -44,6 +44,22 @@ class MyhomePage extends StatelessWidget{
                ),
              ),
              elevation: 7,
+           ),
+         ),//les champs de saisie
+         Card(
+           elevation:5,
+           child:Container(
+             padding: EdgeInsets.all(10),
+             child:Column(
+               crossAxisAlignment: CrossAxisAlignment.end,
+               children:<Widget>[
+                 TextField(decoration:InputDecoration(labelText: 'Title'),),
+                 TextField(decoration:InputDecoration(labelText: 'Amount'),),
+                 FlatButton(onPressed: (){
+                   print('Boutton is pressed');
+                 }, child: Text('Add Transaction',style:TextStyle(color:Colors.purple),),),
+               ],
+             ),
            ),
          ),
          Column(
