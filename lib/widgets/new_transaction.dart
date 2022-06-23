@@ -1,11 +1,17 @@
 import 'package:flutter/material.dart';
 
-class NewTransaction extends StatelessWidget {
+class NewTransaction extends StatefulWidget {
   final Function addTx;
-  final titleControlleur=TextEditingController();
-  final amoutControlleur=TextEditingController();
+  @override
+  State<NewTransaction> createState() => NewTransaction_State();
 
   NewTransaction(this.addTx);
+}
+
+class NewTransaction_State extends State<NewTransaction> {
+
+  final titleControlleur=TextEditingController();
+  final amoutControlleur=TextEditingController();
 
   void submitedData(){
     final entreTitle=titleControlleur.text;
@@ -14,10 +20,13 @@ class NewTransaction extends StatelessWidget {
       return;
     }
     print('Button is pressed................................!');
-    addTx(
-        entreTitle,
-        entreAmount,
+    widget.addTx(
+      entreTitle,
+      entreAmount,
     );
+
+    Navigator.of(context).pop();
+    //Pour fermer le popup apres avoir effectuer la function
   }
 
   @override
@@ -65,3 +74,4 @@ class NewTransaction extends StatelessWidget {
     );
   }
 }
+
