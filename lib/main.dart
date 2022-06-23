@@ -27,6 +27,14 @@ class MyhomePage extends StatelessWidget{
        title: const Text(
          'First App'
        ),
+       actions:<Widget>[
+         IconButton(
+           icon:Icon(Icons.add),
+           onPressed: (){
+             print('Pressed Button......................;;');
+           },
+         )
+       ]
      ),
      body:SingleChildScrollView(
         child:Column(
@@ -35,21 +43,28 @@ class MyhomePage extends StatelessWidget{
          children: <Widget>[
            Container(
              width: double.infinity,
-             child: Card(
+             child:  const Card(
                color: Colors.blue,
+               elevation: 7,
                child: Text(
                  'CHART !!',
                    style: TextStyle(
                    color: Colors.white,
                  ),
                ),
-               elevation: 7,
              ),
            ),
            UserTransaction(),
          ],
         ),
       ),
+     floatingActionButtonLocation:FloatingActionButtonLocation.centerFloat,
+     floatingActionButton: FloatingActionButton(
+       child: Icon(Icons.add),
+       onPressed:(){
+         print('Button pressed...................');
+       },
+     ),
     );
   }
 }
