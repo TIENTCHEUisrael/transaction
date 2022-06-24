@@ -11,7 +11,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter App',
       theme: ThemeData(
-        primarySwatch: Colors.blue,//Changer la couleur par defaut de l'application
+        primarySwatch: Colors.purple,//Changer la couleur par defaut de l'application
         accentColor: Colors.orangeAccent,//Changer la couleur secondaire
         fontFamily: 'Quicksand',
         //On veut changer l'aspect de l'APP bar
@@ -39,7 +39,7 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   final List<Transaction> _userTransactions = [
-    Transaction(
+    /*Transaction(
       id: 't1',
       title: 'New Shoes',
       amount: 69.99,
@@ -50,7 +50,7 @@ class _MyHomePageState extends State<MyHomePage> {
       title: 'Weekly Groceries',
       amount: 16.53,
       date: DateTime.now(),
-    ),
+    ),*/
   ];
 
   void _addNewTransaction(String txTitle, double txAmount) {

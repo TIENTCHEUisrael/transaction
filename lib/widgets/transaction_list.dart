@@ -12,7 +12,19 @@ class TransactionList extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
     height: 450,
-      child:ListView.builder(
+      child:transactions.isEmpty ? Column(children: [
+        Text(
+          'No transaction there',
+          style: Theme.of(context).textTheme.titleLarge,
+        ),
+        SizedBox(
+          height: 120,
+        ),
+        Container(
+          height: 250,
+          child: Image.asset('assets/images/waiting.png',fit: BoxFit.cover,),
+        ),
+      ],): ListView.builder(
         itemBuilder: (ctx,index){
           return Card(
             child: Row(
@@ -24,7 +36,7 @@ class TransactionList extends StatelessWidget {
                   ),
                   decoration: BoxDecoration(
                     border: Border.all(
-                      color: Colors.purple,
+                      color: Theme.of(context).primaryColor,//mettre la couleur par defaut en fonction du context
                       width: 1,
                     ),
                     borderRadius: BorderRadius.circular(10.0),
@@ -35,7 +47,7 @@ class TransactionList extends StatelessWidget {
                     style: TextStyle(
                       fontSize: 14,
                       fontWeight: FontWeight.bold,
-                      color: Colors.purple,
+                      color: Theme.of(context).primaryColor,
                     ),
                   ),
                 ),
@@ -58,13 +70,13 @@ class TransactionList extends StatelessWidget {
                       ),
                     ),
                   ],
-                )
+                ),
               ],
             ),
           );
         },
         itemCount: transactions.length,
-      )
+      ),
     );
   }
 }
