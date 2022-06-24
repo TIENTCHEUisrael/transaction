@@ -10,6 +10,21 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter App',
+      theme: ThemeData(
+        primarySwatch: Colors.blue,//Changer la couleur par defaut de l'application
+        accentColor: Colors.orangeAccent,//Changer la couleur secondaire
+        fontFamily: 'Quicksand',
+        //On veut changer l'aspect de l'APP bar
+        appBarTheme: AppBarTheme(
+          textTheme: ThemeData.light().textTheme.copyWith(
+            titleLarge:TextStyle(
+              fontFamily: 'OpenSans',
+              fontSize: 20,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+        ),
+      ),
       home: MyHomePage(),
     );
   }
@@ -68,7 +83,10 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('First App'),
+        title: Text(
+          'First App',
+          style: ThemeData.light().textTheme.titleLarge,
+        ),
         actions: <Widget>[
           IconButton(
             icon: Icon(Icons.add),
