@@ -2,71 +2,62 @@ import 'package:flutter/material.dart';
 
 class NewTransaction extends StatefulWidget {
   final Function addTx;
-  @override
-  State<NewTransaction> createState() => NewTransaction_State();
 
   NewTransaction(this.addTx);
+
+  @override
+  _NewTransactionState createState() => _NewTransactionState();
 }
 
-class NewTransaction_State extends State<NewTransaction> {
+class _NewTransactionState extends State<NewTransaction> {
+  final titleController = TextEditingController();
 
-  final titleControlleur=TextEditingController();
-  final amoutControlleur=TextEditingController();
+  final amountController = TextEditingController();
 
-  void submitedData(){
-    final entreTitle=titleControlleur.text;
-    final entreAmount=double.parse(amoutControlleur.text);
-    if(entreTitle.isEmpty || entreAmount<=0){
+  void submitData() {
+    final enteredTitle = titleController.text;
+    final enteredAmount = double.parse(amountController.text);
+
+    if (enteredTitle.isEmpty || enteredAmount <= 0) {
       return;
     }
-    print('Button is pressed................................!');
+
     widget.addTx(
-      entreTitle,
-      entreAmount,
+      enteredTitle,
+      enteredAmount,
     );
 
     Navigator.of(context).pop();
-    //Pour fermer le popup apres avoir effectuer la function
   }
 
   @override
   Widget build(BuildContext context) {
     return Card(
-      elevation:3,
-      child:Container(
+      elevation: 5,
+      child: Container(
         padding: EdgeInsets.all(10),
-        child:Column(
+        child: Column(
           crossAxisAlignment: CrossAxisAlignment.end,
-          children:<Widget>[
+          children: <Widget>[
             TextField(
-              decoration:InputDecoration(
-                  labelText: 'Title'
-              ),
-              controller: titleControlleur,
-              onSubmitted: (_)=>submitedData(),
-              /*onChanged: (val){
-                     titleInput=val;
-                   },*/
+              decoration: InputDecoration(labelText: 'Title'),
+              controller: titleController,
+              onSubmitted: (_) => submitData(),
+              // onChanged: (val) {
+              //   titleInput = val;
+              // },
             ),
             TextField(
-              decoration:InputDecoration(
-                  labelText: 'Amount'
-              ),
-              controller: amoutControlleur,
-              keyboardType:TextInputType.number,
-              onSubmitted: (_)=> submitedData(),
-              /*onChanged: (val){
-                     amoutInput=val;
-                   },*/
+              decoration: InputDecoration(labelText: 'Amount'),
+              controller: amountController,
+              keyboardType: TextInputType.number,
+              onSubmitted: (_) => submitData(),
+              // onChanged: (val) => amountInput = val,
             ),
             FlatButton(
-              onPressed: submitedData,
-              child: Text(
-                'Add Transaction',
-                style:TextStyle(
-                    color:Colors.purple
-                ),
-              ),
+              child: Text('Add Transaction'),
+              textColor: Colors.purple,
+              onPressed: submitData,
             ),
           ],
         ),
@@ -74,4 +65,3 @@ class NewTransaction_State extends State<NewTransaction> {
     );
   }
 }
-
